@@ -204,7 +204,7 @@ class _GameWebViewScreenState extends State<GameWebViewScreen> {
     return Scaffold(
       backgroundColor: Colors.black, // يفضل وضع لون خلفية لتجنب وميض الشاشة
       bottomNavigationBar: gameDistributionLogic.loadBannerWidget(),
-      body: SafeArea(
+      body: gameDistributionLogic.obx((state) => SafeArea(
         child: Stack(
           children: [
             InAppWebView(
@@ -221,7 +221,7 @@ class _GameWebViewScreenState extends State<GameWebViewScreen> {
                 javaScriptEnabled: true,
                 transparentBackground: true,
                 mediaPlaybackRequiresUserGesture:
-                    false, // مطلوب للسماح بأصوات اللعبة بالعمل فوراً
+                false, // مطلوب للسماح بأصوات اللعبة بالعمل فوراً
               ),
               onWebViewCreated: (controller) {
                 webViewController = controller;
@@ -280,7 +280,8 @@ class _GameWebViewScreenState extends State<GameWebViewScreen> {
                 debugPrint("WebView Error: ${error.description}");
               },
             ),
-            Positioned(
+            /*
+           Positioned(
               bottom: 20,
               right: 20,
               // يمكنك تغييرها إلى left: 20 إذا أردت الزر على اليسار
@@ -301,9 +302,10 @@ class _GameWebViewScreenState extends State<GameWebViewScreen> {
                 ),
               ),
             ),
+           */
           ],
         ),
-      ),
+      ),),
     );
   }
 }
