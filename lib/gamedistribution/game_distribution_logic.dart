@@ -24,6 +24,7 @@ class GameDistributionLogic extends GetxController
     Future.delayed(Duration.zero, () {
       loadBannerAd(forceUseId: bannerAdId ?? 'ca-app-pub-8107574011529731/7844715163');
     });
+    change(null,status: RxStatus.success());
     // loadInitial();
   }
 
