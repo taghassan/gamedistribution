@@ -6,23 +6,24 @@ import 'package:gamedistribution/gamedistribution/GameService.dart';
 import 'game_distribution_state.dart';
 
 class GameDistributionLogic extends GetxController
-    with StateMixin<GameDistributionState>,InterstitialAdState,HasBannerAd {
+    with StateMixin<GameDistributionState>, InterstitialAdState, HasBannerAd {
   String? interstitialAdId;
   String? bannerAdId;
-  GameDistributionLogic({this.bannerAdId,this.interstitialAdId});
+
+  GameDistributionLogic({this.bannerAdId, this.interstitialAdId});
 
   final GameService _service = GameService();
 
   @override
   void onInit() {
     super.onInit();
-    loadInterstitialAdAd(interstitialAdId: 'ca-app-pub-8107574011529731/7525150969');
-    Future.delayed(
-      Duration.zero,
-          () {
-        loadBannerAd(forceUseId: 'ca-app-pub-8107574011529731/7844715163');
-      },
+    loadInterstitialAdAd(
+      interstitialAdId:
+          interstitialAdId ?? 'ca-app-pub-8107574011529731/7525150969',
     );
+    Future.delayed(Duration.zero, () {
+      loadBannerAd(forceUseId: bannerAdId ?? 'ca-app-pub-8107574011529731/7844715163');
+    });
     // loadInitial();
   }
 
