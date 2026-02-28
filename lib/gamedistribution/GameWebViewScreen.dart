@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:gamedistribution/gamedistribution/game_distribution_logic.dart';
 
 class GameWebViewScreen extends StatefulWidget {
+  final String? interstitialAdId;
   final String gameId;
   final String mobileMode; // Landscape or Portrait
 
@@ -13,6 +14,7 @@ class GameWebViewScreen extends StatefulWidget {
     super.key,
     required this.gameId,
     required this.mobileMode,
+    this.interstitialAdId
   });
 
   @override
@@ -168,7 +170,7 @@ class _GameWebViewScreenState extends State<GameWebViewScreen> {
   void initState() {
     gameDistributionLogic.interstitialAd?.show().then((value) {
       gameDistributionLogic.loadInterstitialAdAd(
-        interstitialAdId: 'ca-app-pub-8107574011529731/7525150969',
+        interstitialAdId: widget.interstitialAdId ?? 'ca-app-pub-8107574011529731/7525150969',
       );
     });
 
@@ -201,6 +203,7 @@ class _GameWebViewScreenState extends State<GameWebViewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black, // يفضل وضع لون خلفية لتجنب وميض الشاشة
+      bottomNavigationBar: gameDistributionLogic.loadBannerWidget(),
       body: SafeArea(
         child: Stack(
           children: [

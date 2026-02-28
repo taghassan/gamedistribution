@@ -7,6 +7,9 @@ import 'game_distribution_state.dart';
 
 class GameDistributionLogic extends GetxController
     with StateMixin<GameDistributionState>,InterstitialAdState,HasBannerAd {
+  String? interstitialAdId;
+  String? bannerAdId;
+  GameDistributionLogic({this.bannerAdId,this.interstitialAdId});
 
   final GameService _service = GameService();
 
